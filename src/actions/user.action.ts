@@ -37,3 +37,24 @@ export const syncUser = async () => {
     throw new Error(`Failed to sync user - ${error}`);
   }
 };
+
+export const getUserByClerckId = async (clerkId: string) => {
+  try {
+    const userFollowersCount = await prisma.user.findUnique({
+      where: { clerkId },
+      include: {
+        _count: {
+          select: {
+            followers: true,
+            following: true,
+            posts: true,
+          },
+        },
+      },
+    });
+    if (!userFollowersCount) return null;
+    return userFollowersCount;
+  } catch (error) {
+    throw new Error(`Failed to get user by clerk id - ${error}`);
+  }
+};
