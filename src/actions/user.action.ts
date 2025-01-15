@@ -58,3 +58,13 @@ export const getUserByClerckId = async (clerkId: string) => {
     throw new Error(`Failed to get user by clerk id - ${error}`);
   }
 };
+
+export const getDbUserId = async () => {
+  const { userId: clerkId } = await auth();
+  if (!clerkId) throw new Error("User not authenticated");
+  const user = await getUserByClerckId(clerkId);
+
+  if (!user) throw new Error("User not found");
+
+  return user.id;
+};

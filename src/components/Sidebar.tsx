@@ -3,7 +3,6 @@ import React from "react";
 import UnAuthenticatedSidebar from "./UnAuthenticatedSidebar";
 import { getUserByClerckId } from "@/actions/user.action";
 import AutenticatedSidebar from "./AutenticatedSidebar";
-import { UserType } from "@/types/userType";
 
 const Sidebar = async () => {
   const authUser = await currentUser();
