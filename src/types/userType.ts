@@ -1,3 +1,5 @@
+import { getPosts } from "@/actions/post.action";
+
 export interface UserType {
   id: string;
   email: string;
@@ -16,3 +18,6 @@ export interface UserType {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export type Posts = Awaited<ReturnType<typeof getPosts>>;
+export type Post = Posts[number];
