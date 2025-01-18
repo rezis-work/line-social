@@ -1,3 +1,4 @@
+import { getNotifications } from "@/actions/notification.action";
 import { getPosts } from "@/actions/post.action";
 
 export interface UserType {
@@ -21,3 +22,6 @@ export interface UserType {
 
 export type Posts = Awaited<ReturnType<typeof getPosts>>;
 export type Post = Posts[number];
+
+export type Notifications = Awaited<ReturnType<typeof getNotifications>>;
+export type Notification = Notifications[number];
