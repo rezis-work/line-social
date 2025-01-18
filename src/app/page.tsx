@@ -4,6 +4,12 @@ import CreatePost from "@/components/CreatePost";
 import PostCard from "@/components/PostCard";
 import WhoToFollow from "@/components/WhoToFollow";
 import { currentUser } from "@clerk/nextjs/server";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Line Social | Home",
+  description: "A social media platform for Javscript developers",
+};
 
 export default async function Home() {
   const user = await currentUser();

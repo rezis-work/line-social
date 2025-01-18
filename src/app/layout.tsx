@@ -21,7 +21,15 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Line Social",
-  description: "Line Social | Place where you can share your thoughts",
+  description:
+    "Line Social | Place where you can share your javascript skills and experience",
+  icons: {
+    icon: [
+      {
+        url: "/logo.png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
