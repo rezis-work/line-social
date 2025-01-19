@@ -19,6 +19,52 @@ export const generateMetadata = async ({
     title: `Line Social | ${user.name ?? user.username}`,
     description:
       user.bio || `Check out ${user.name ?? user.username}'s profile`,
+    icons: {
+      icon: user.image,
+    },
+    openGraph: {
+      title: `Line Social | ${user.name ?? user.username}`,
+      description:
+        user.bio || `Check out ${user.name ?? user.username}'s profile`,
+      url: `https://linesocial.pro/profile/${user.username}`,
+      type: "website",
+      images: [
+        {
+          url: user.image,
+          width: 1200,
+          height: 627,
+          alt: `${user.name ?? user.username} image`,
+        },
+      ],
+      locale: "en_US",
+      siteName: "Line Social",
+    },
+    canonical: `https://linesocial.pro/profile/${
+      user.username ?? user.username
+    }`,
+  };
+};
+
+export const getStructuredData = async ({
+  params,
+}: {
+  params: { username: string };
+}) => {
+  const user = await getProfileByUsername(params.username);
+  if (!user) return;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: user.name ?? user.username,
+    url: `https://linesocial.pro/profile/${user.name ?? user.username}`,
+    image: user.image,
+    description:
+      user.bio || `Check out ${user.name ?? user.username}'s profile`,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `https://linesocial.pro/profile/${user.name ?? user.username}`,
+    },
   };
 };
 

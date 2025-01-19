@@ -9,6 +9,34 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Line Social | Home",
   description: "A social media platform for Javscript developers",
+  icons: "/logo.png",
+  openGraph: {
+    title: "Line Social | Home",
+    description: "A social media platform for Javscript developers",
+    url: "https://linesocial.pro",
+    type: "website",
+    images: [
+      {
+        url: "https://utfs.io/f/lPAOELt7YxzGNB4iOPxOaPAZx3qvf0S8CWnKDshVuYrGFoMt",
+        width: 1200,
+        height: 627,
+        alt: "Line Social",
+      },
+    ],
+    locale: "en_US",
+    siteName: "Line Social",
+  },
+};
+
+export const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Line Social",
+  url: "https://linesocial.pro",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://linesocial.pro/",
+  },
 };
 
 export default async function Home() {

@@ -8,7 +8,12 @@ import { currentUser } from "@clerk/nextjs/server";
 async function DesktopNavbar() {
   const user = await currentUser();
 
-  if (!user) return <ModeToggle />;
+  if (!user)
+    return (
+      <div className="hidden md:flex items-center space-x-4">
+        <ModeToggle />
+      </div>
+    );
 
   return (
     <div className="hidden md:flex items-center space-x-4">
