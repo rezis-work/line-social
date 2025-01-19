@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const structuredData = {
+const structuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Line Social",

@@ -45,7 +45,7 @@ export const generateMetadata = async ({
   };
 };
 
-export const getStructuredData = async ({
+const getStructuredData = async ({
   params,
 }: {
   params: { username: string };
@@ -71,6 +71,8 @@ export const getStructuredData = async ({
 const ProfilePage = async ({ params }: { params: { username: string } }) => {
   const user = await getProfileByUsername(params.username);
   if (!user) notFound();
+
+  await getStructuredData({ params });
 
   const [posts, likedPosts, isCurrentUserFollowing] = await Promise.all([
     getUserPosts(user.id),
