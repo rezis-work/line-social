@@ -37,8 +37,6 @@ const CreatePost = () => {
         setShowImageUpload(false);
       }
 
-      console.log(content);
-
       toast.success("Post created successfully");
     } catch (error) {
       toast.error("Failed to create post");

@@ -6,16 +6,15 @@ import { revalidatePath } from "next/cache";
 
 export const syncUser = async () => {
   try {
-    // get the user id and user from clerk
-    const { userId } = await auth();
     const user = await currentUser();
+
     // if the user is not found, return
-    if (!userId || !user) return;
+    if (!user) throw new Error("User not found");
 
     // we need to check if the user already exists in the database
     const existingUser = await prisma.user.findUnique({
       where: {
-        clerkId: userId,
+        clerkId: user.id,
       },
     });
 
@@ -24,7 +23,7 @@ export const syncUser = async () => {
     // if does not exist, we need to create a new user
     const dbUser = await prisma.user.create({
       data: {
-        clerkId: userId,
+        clerkId: user.id,
         name: `${user.firstName || ""} ${user.lastName || ""}`,
         username:
           user.username ?? user.emailAddresses[0].emailAddress.split("@")[0],
